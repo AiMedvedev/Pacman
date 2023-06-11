@@ -14,6 +14,11 @@ let wallInnerColor = "black";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 
+const DIRECTION_RIGHT = 4;
+const DIRECTION_UP = 3;
+const DIRECTION_LEFT = 2;
+const DIRECTION_BOTTOM = 1;
+
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
@@ -46,13 +51,15 @@ let gameLoop = () => {
 }
 
 let update = () => {
-    //todo  
+    //todo 
+    pacman.moveProcess(); 
 }
 
 let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, "black");
-    //todo
+    
     drawWalls();
+    pacman.draw();
 }
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -110,3 +117,34 @@ let drawWalls = () => {
     }
 };
 
+let createNewPackman = () => {
+    pacman = new Pacman(
+        oneBlockSize,
+        oneBlockSize,
+        oneBlockSize,
+        oneBlockSize,
+        oneBlockSize / 5
+    )
+}
+
+createNewPackman();
+gameLoop();
+
+window.addEventListener("keydown", (event) => {
+    let k = event.keyCode;
+
+    setTimeout(() => {
+        if (k == 37 || k == 65) { // left
+            pacman.nextDirection = DIRECTION_LEFT;
+        }   
+        if (k == 38 || k == 87) { // up
+            pacman.nextDirection = DIRECTION_UP;
+        }
+        if (k == 39 || k == 68) { // right
+            pacman.nextDirection = DIRECTION_RIGHT;
+        }   
+        if (k == 40 || k == 83) { // down
+            pacman.nextDirection = DIRECTION_BOTTOM;
+        }   
+    }, 1)
+})
