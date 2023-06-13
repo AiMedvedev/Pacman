@@ -150,7 +150,7 @@ class Ghost {
     addNeighbors(poped, mp) {
         let queue = [];
         let numOfRows = mp.length;
-        let numOfColumns = mp[0].lemgth;
+        let numOfColumns = mp[0].length;
 
         if (poped.x - 1 >= 0 && poped.x - 1 < numOfRows && mp[poped.y][poped.x - 1] != 1) {
             let tempMoves = poped.moves.slice();
@@ -195,7 +195,6 @@ class Ghost {
             this.y,
             this.width,
             this.height
-
         )
 
         canvasContext.restore();

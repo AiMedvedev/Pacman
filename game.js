@@ -76,8 +76,8 @@ let randomTargetForGhosts = [
 ];
 
 let gameLoop = () => {
-    update();
     draw();
+    update();
 }
 
 let update = () => {
@@ -115,20 +115,20 @@ let gameOver = () => {
 }
 
 let drawGameOver = () => {
-    canvasContext.font = "20px Emulogic";
+    canvasContext.font = "40px Emulogic";
     canvasContext.fillStyle = "white";
-    canvasContext.fillText("Game Over!", 200, 150);
+    canvasContext.fillText("Game Over!", 150, 200);
 }
 
 let drawWin = () => {
-    canvasContext.font = "20px Emulogic";
+    canvasContext.font = "40px Emulogic";
     canvasContext.fillStyle = "white";
-    canvasContext.fillText("Congratulations!", 200, 150);
+    canvasContext.fillText("Congratulations!", 150, 200);
     clearInterval(gameInterval);
 }
 
 let drawLives = () => {
-    canvasContext.font = "20px Emulogic";
+    canvasContext.font = "25px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText("Lives: ", 220, oneBlockSize * (map.length + 1) + 10);
 
@@ -164,7 +164,7 @@ let draw = () => {
 }
 
 let drawScore = () => {
-    canvasContext.font = "20px Emulogic";
+    canvasContext.font = "25px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText("Score: " + score, 0, oneBlockSize * (map.length + 1) + 10);
 }
@@ -287,5 +287,5 @@ window.addEventListener("keydown", (event) => {
         if (k == 40 || k == 83) { // down
             pacman.nextDirection = DIRECTION_BOTTOM;
         }   
-    }, 1)
-})
+    }, 1);
+});
